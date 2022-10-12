@@ -1,0 +1,63 @@
+---
+- hosts: all
+  vars:
+    user_name: metrice
+
+  tasks:
+  - name: Install the packages that you mainly use
+    package:
+      name:
+        - neovim
+        - sudo
+        - tmux
+        - nmap
+        - neofetch
+        - imagemagick
+        - fail2ban
+        - docker.io
+        - virt-manager
+        - ansible
+        - python3-pip
+        - fish
+      state: latest
+
+  - name: Install python-pip packages
+    pip:
+      name:
+        - docker
+        - docker-compose
+        - ansible
+
+  - name: Create a directories if it does not exist
+    ansible.builtin.file:
+      path: "{{ item }}"
+      state: directory
+      mode: '0775'
+      recurse: no
+      owner: "{{ user_name }}"
+      group: "{{ user_name }}"
+    loop:
+      - /home/{{user_name}}/Downloads/
+      - /home/{{user_name}}/Git-repos/
+
+  - name: Create a 2048-bit SSH key
+    ansible.builtin.user:
+      name: "{{ user_name }}"
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: .ssh/id_rsa
+      # after install protect ssh key with password
+
+  - name: Add the user "{{ user_name }}" with a bash shell, appending the groups 'docker'and 'libvirt'
+    ansible.builtin.user:
+      name: "{{ user_name }}"
+      groups: docker,libvirt
+      append: yes
+
+  - name: Clone a repo with separate git directory
+    ansible.builtin.git:
+      repo: https://github.com/gnarlin/osget.git
+      dest: /home/{{user_name}}/Git-repos/osget/
+
+  - name: Install osget
+    ansible.builtin.shell: bash /home/{{user_name}}/Git-repos/osget/install.sh --install
