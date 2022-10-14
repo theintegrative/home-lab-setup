@@ -1,0 +1,26 @@
+---
+- name: Clone a repo with separate git directory
+  ansible.builtin.git:
+    repo: https://github.com/gnarlin/osget.git
+    dest: /home/{{user_name}}/Git-repos/osget/
+
+- name: Install osget
+  ansible.builtin.shell: bash /home/{{user_name}}/Git-repos/osget/install.sh --install
+
+- name: Set download folder
+  ansible.builtin.replace:
+    path: /etc/osget/osget.conf
+    regexp: 'DOWNLOAD_DIR=""'
+    replace: 'DOWNLOAD_DIR="/var/lib/libvirt/images/"'
+
+- name: Download iso files
+  ansible.builtin.shell:
+    cmd: osget "{{ item }}"
+  loop:
+    - ubuntu-22.04.1-desktop-amd64
+    - openSUSE-Tumbleweed-DVD-x86_64-Current
+    - CentOS-Stream-8-x86_64-20210629-dvd1
+    - archlinux-2022.08.05-x86_64
+    - ubuntu-21.10-live-server-amd64
+
+

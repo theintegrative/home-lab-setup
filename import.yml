@@ -1,8 +1,0 @@
----
-- name: Clone a repo with separate git directory
-  ansible.builtin.git:
-    repo: https://github.com/gnarlin/osget.git
-    dest: /home/{{user_name}}/Git-repos/osget/
-
-- name: Install osget
-  ansible.builtin.shell: bash /home/{{user_name}}/Git-repos/osget/install.sh --install

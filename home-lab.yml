@@ -4,7 +4,9 @@
     user_name: metrice
   handlers:
     - name: Install osget
-      include_tasks: import.yml
+      include_tasks: osget.yml
+    - name: Setup VM's
+      include_tasks: vm-setup.yml
 
   tasks:
   - name: Install the packages that you mainly use
@@ -59,3 +61,6 @@
 
   - command: "true"
     notify: Install osget
+
+  - command: "true"
+    notify: Setup VM's
