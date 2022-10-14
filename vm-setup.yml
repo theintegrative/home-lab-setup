@@ -1,6 +1,14 @@
 ---
-- name: Define vm from xml and set autostart
-  community.libvirt.virt:
-    command: define
-    xml: "{{ lookup('template', 'vm_template.xml.j2') }}"
-    autostart: yes
+- name: Download iso files
+  ansible.builtin.shell:
+    cmd: 'virt-install --name=linuxconfig-{{ index }} --vcpus=1 --memory=1024 --cdrom=/var/lib/libvirt/images/{{ item }} --disk size=25 --os-variant=linux2020'
+  loop:
+    - archlinux-2022.08.05-x86_64.iso  
+    - openSUSE-Tumbleweed-DVD-x86_64-Current.iso
+    - ubuntu-21.10-live-server-amd64.iso
+  loop_control:
+    index_var: index
+    pause: 10
+  async: 60
+  poll: 0
+
