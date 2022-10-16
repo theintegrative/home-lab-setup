@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    user_name: metrice
+    user_name: theintegrative
   handlers:
     - name: Setup vagrant with kvm
       include_tasks: vagrant.yml
