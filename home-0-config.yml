@@ -1,0 +1,28 @@
+---
+- hosts: all
+  vars:
+    user_name: theintegrative
+  handlers:
+    - name: Setup vagrant with kvm
+      include_tasks: vagrant.yml
+
+  tasks:
+    - name: Install the packages that you mainly use
+      package:
+        name:
+          - neovim
+          - sudo
+          - tmux
+          - nmap
+          - neofetch
+          - fail2ban
+        state: latest
+
+    - name: Add the user "{{ user_name }}" with a bash shell, appending the groups 'docker'and 'libvirt'
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        groups: docker
+        append: true
+
+    - command: "true"
+      notify: Setup vagrant
