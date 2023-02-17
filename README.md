@@ -10,8 +10,6 @@ Here you can see all my basic configurations using ansible for my homelab server
   - [Installation](#installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
 - [Authors](#authors)
 
 ## Getting Started
