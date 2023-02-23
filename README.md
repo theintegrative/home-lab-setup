@@ -26,7 +26,7 @@ Laptop: (home-0)
 - disk: 98G
 
 PC: (home-1)
-- os: Proxmox (Debian)
+- os: Ubuntu server
 - cpu: AMD FX-8350 (8) @ 4.000GHz
 - gpu: AMD ATI Radeon 3000 
 - memory: 329MiB / 15729MiB 
@@ -46,8 +46,8 @@ git clone git@github.com:theintegrative/home-lab-setup-ansible.git
 
 ## Usage
 
-``` 
-ansible-playbook -i home-0, -bK home-0-config.yml
+```
+ansible-playbook -i homelab -bK main.yml
 ```
 
 ## Configuration

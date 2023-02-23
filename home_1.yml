@@ -1,0 +1,5 @@
+---
+- hosts: laptop
+  tasks:
+  roles:
+    - cli_tools
