@@ -1,0 +1,9 @@
+---
+- hosts: pc
+  vars:
+    user_name: "theintegrative"
+    user_home: "/home/{{ user_name }}/"
+  roles:
+    - cli_tools
+      #- microstack
+    - archer_T3U

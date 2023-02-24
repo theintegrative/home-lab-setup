@@ -1,0 +1,11 @@
+---
+- name: Install the packages that you mainly use
+  package:
+    name:
+      - neovim
+      - sudo
+      - tmux
+      - nmap
+      - neofetch
+      - fail2ban
+    state: latest

@@ -1,0 +1,20 @@
+---
+- name: Install dependency packages
+  ansible.builtin.apt:
+    name:
+      - dkms
+      - network-manager
+      - git
+
+- name: Download drivers for archer T3U 
+  ansible.builtin.git:
+    repo: https://github.com/RinCat/RTL88x2BU-Linux-Driver
+    dest: "{{ user_home }}RTL88x2BU-Linux-Driver/"
+
+- name: Copy dkms script
+  ansible.builtin.copy:
+    src: dkms_install.sh
+    dest: "{{ user_home }}"
+
+- name: Install the drivers with dkms
+  ansible.builtin.shell: bash "{{ user_home }}dkms_install.sh"
