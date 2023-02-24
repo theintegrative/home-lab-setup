@@ -1,4 +1,17 @@
 ---
 - hosts: laptop
+  vars:
+    user_name: "metrice"
   roles:
     - cli_tools
+  tasks:
+    - name: Install packages
+      ansible.builtin.apt:
+        name:
+          - docker.io
+    
+    - name: Add the user "{{ user_name }}" to group docker
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        groups: docker
+        append: true

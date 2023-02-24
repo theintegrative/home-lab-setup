@@ -1,7 +1,25 @@
 ---
-- name: Install microstack package
-  community.general.snap:
-    name: microstack
+- name: Install kvm
+  ansible.builtin.apt:
+    name:
+      - virt-manager
+    state: latest
+
+- name: Enable service libvirt, and start if not started
+  service:
+    name: libvirtd
+    enabled: yes
+    state: started
+
+- name: adding existing user ansible to group libvirt/-qemu
+  user:
+    name: "theintegrative"
+    groups: libvirt,libvirt-qemu
+    append: yes
 
 - name: Initialise microstack
-  ansible.builtin.shell: microstack init --auto --control
+  ansible.builtin.shell: "{{ item }}"
+  loop:
+    - snap install microstack --beta
+    - microstack init --auto --control
+    - snap install openstackclients

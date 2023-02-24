@@ -1,9 +1,8 @@
 ---
-- hosts: pc
+- hosts: localhost
+  remote_user: root
   vars:
     user_name: "theintegrative"
     user_home: "/home/{{ user_name }}/"
   roles:
-    - cli_tools
-      #- microstack
     - archer_T3U

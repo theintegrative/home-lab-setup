@@ -18,7 +18,6 @@ Example Playbook
 ----------------
 
 Add the role to your play book like this:
-
 ``` yaml
   roles:
     - microstack 
