@@ -1,0 +1,17 @@
+galaxy_info:
+  author: The Integrative
+  description: your role description
+  company: The Integrative
+
+  license: license GPL-3.0-or-later
+
+  min_ansible_version: 2.1
+
+  platforms:
+    - name: Ubuntu
+      versions:
+      - all
+
+  galaxy_tags: []
+
+dependencies: []

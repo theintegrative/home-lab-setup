@@ -1,4 +1,4 @@
 ---
-- hosts: pc
+- hosts: laptop
   roles:
     - cli_tools

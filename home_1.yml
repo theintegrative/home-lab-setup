@@ -1,5 +1,5 @@
 ---
-- hosts: laptop
-  tasks:
+- hosts: pc
   roles:
     - cli_tools
+    - microstack

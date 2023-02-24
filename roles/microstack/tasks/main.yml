@@ -1,0 +1,7 @@
+---
+- name: Install microstack package
+  community.general.snap:
+    name: microstack
+
+- name: Initialise microstack
+  ansible.builtin.shell: microstack init --auto --control
