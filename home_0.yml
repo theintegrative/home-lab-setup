@@ -2,8 +2,9 @@
 - hosts: laptop
   vars:
     user_name: "metrice"
-  roles:
-    - cli_tools
+  vars_prompt:    
+    - name: runner_key
+      prompt: What is your runner registration key?
   tasks:
     - name: Install packages
       ansible.builtin.apt:
@@ -15,3 +16,7 @@
         name: "{{ user_name }}"
         groups: docker
         append: true
+  roles:
+    - cli_tools
+      #- gitlab-runner
+    - inventree

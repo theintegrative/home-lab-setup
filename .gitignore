@@ -1,2 +1,8 @@
 .gitignore
 run
+.note
+.env
+*.env
+store/
+# Not ready yet
+roles/gitlab-runner/

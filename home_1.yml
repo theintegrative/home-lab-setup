@@ -5,5 +5,18 @@
     user_home: "/home/{{ user_name }}/"
   roles:
     - cli_tools
-      #- microstack
     - archer_T3U
+    - main_lab
+
+  tasks:
+    - name: Install packages
+      ansible.builtin.apt:
+        name:
+          - docker.io
+          - docker-compose
+    
+    - name: Add the user "{{ user_name }}" to group docker
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        groups: docker
+        append: true
