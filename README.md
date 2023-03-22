@@ -47,7 +47,7 @@ git clone git@github.com:theintegrative/home-lab-setup-ansible.git
 ## Usage
 
 ```
-ansible-playbook -i homelab -bK main.yml
+ansible-playbook -i ansible/homelab -bK ansible/playbooks/main.yml
 ```
 
 ## Configuration

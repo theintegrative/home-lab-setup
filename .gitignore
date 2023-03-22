@@ -4,5 +4,6 @@ run
 .env
 *.env
 store/
+.vagrant/
 # Not ready yet
-roles/gitlab-runner/
+ansible/roles/gitlab-runner/
