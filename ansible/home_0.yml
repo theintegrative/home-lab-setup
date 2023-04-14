@@ -1,22 +1,12 @@
 ---
-- hosts: laptop
+- hosts: "{{ variable_host | default('laptop') }}"
   vars:
     user_name: "metrice"
   vars_prompt:    
     - name: runner_key
       prompt: What is your runner registration key?
-  tasks:
-    - name: Install packages
-      ansible.builtin.apt:
-        name:
-          - docker.io
-    
-    - name: Add the user "{{ user_name }}" to group docker
-      ansible.builtin.user:
-        name: "{{ user_name }}"
-        groups: docker
-        append: true
+ 
   roles:
     - cli_tools
-      #- gitlab-runner
-    - inventree
+    - #gitlab-runner
+    - docker
