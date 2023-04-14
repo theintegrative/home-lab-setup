@@ -1,0 +1,12 @@
+network:
+  ethernets:
+    usb0:
+      dhcp4: true
+  version: 2
+  wifis:
+    wlx9ca2f49141bb:
+      dhcp4: true
+      dhcp6: true
+      access-points:
+        "H369A72CB14":
+          password: ""
