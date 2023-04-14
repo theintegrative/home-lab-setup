@@ -6,6 +6,7 @@
   roles:
     - cli_tools
     - archer_T3U
+      #- virt-manager-terraform
 
   tasks:
     - name: Install packages
