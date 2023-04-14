@@ -1,7 +1,7 @@
-Role Skeleton
+Role Container Services
 =========
 
-Main lab is used for the tools and services I use mainly inside my homelab
+Container services I use inside my homelab
 
 Requirements
 ------------
@@ -20,7 +20,7 @@ Including an example of how to use your role (for instance, with variables passe
 ``` yaml
 - hosts: pc
   roles:
-    - main_lab
+    - container_services
 ```
 
 License

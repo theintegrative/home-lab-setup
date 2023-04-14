@@ -6,7 +6,6 @@
   roles:
     - cli_tools
     - archer_T3U
-    - main_lab
 
   tasks:
     - name: Install packages

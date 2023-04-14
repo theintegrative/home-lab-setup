@@ -1,6 +1,6 @@
 galaxy_info:
   author: The Integrative
-  description: This configures the mainlab initially
+  description: This sets up the configs for container services I use inside my homelabd
   company: The Integrative
 
   license: license GPL-3.0-or-later
