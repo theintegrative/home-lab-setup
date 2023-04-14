@@ -1,2 +1,10 @@
 .gitignore
 run
+.note
+.env
+*.env
+store/
+.vagrant/
+# Not ready yet
+ansible/roles/gitlab-runner/
+main.tf
