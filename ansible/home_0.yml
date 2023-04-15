@@ -1,0 +1,11 @@
+---
+- hosts: "{{ variable_host | default('laptop') }}"
+  vars:
+    user_name: "metrice"
+  vars_prompt:    
+    - name: runner_key
+      prompt: What is your runner registration key?
+  roles:
+    - cli_tools
+      #- gitlab-runner
+    - docker

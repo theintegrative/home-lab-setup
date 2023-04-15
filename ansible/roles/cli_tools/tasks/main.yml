@@ -1,6 +1,6 @@
 ---
 - name: Install the packages that you mainly use
-  package:
+  ansible.builtin.apt:
     name:
       - neovim
       - sudo
@@ -8,4 +8,4 @@
       - nmap
       - neofetch
       - fail2ban
-    state: latest
+    update_cache: yes
