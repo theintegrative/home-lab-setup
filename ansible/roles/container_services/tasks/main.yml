@@ -1,0 +1,19 @@
+---
+- name: Create network
+  ansible.builtin.shell: docker volume create portainer_data
+
+- name: Copy portainer configuration
+  ansible.builtin.copy:
+    src: portainer/docker-compose.yml
+    dest: "{{ user_home }}"
+
+- name: Copy additional homelab services
+  ansible.builtin.copy:
+    src: "{{ item }}/"
+    dest: "{{ user_home }}/{{ item }}"
+  loop:
+    - inventree
+    - firefly
+
+# copy configuration files from files directory that will be used in a tool like portainer
+# use a similar structure that is used in home_1
