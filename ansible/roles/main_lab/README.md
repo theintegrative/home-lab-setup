@@ -1,7 +1,7 @@
 Role Skeleton
 =========
 
-This role installs virt-manager with the right configurations so that it can be used with terraform-provider-libvirt
+Main lab is used for the tools and services I use mainly inside my homelab
 
 Requirements
 ------------
@@ -9,22 +9,18 @@ Requirements
 Role Variables
 --------------
 
-user_name: this is for appending libvirt to the user groups
-
 Dependencies
 ------------
 
 Example Playbook
 ----------------
 
-This is how you can use it
+Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ``` yaml
 - hosts: pc
-  vars:
-    user_name: theintegrative
   roles:
-    - virt-manager-terraform
+    - main_lab
 ```
 
 License

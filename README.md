@@ -52,17 +52,9 @@ ansible-playbook -i ansible/homelab -bK ansible/playbooks/main.yml
 
 ## Configuration
 
-Generate a password hash:
 ``` shell
-mkpasswd --method=SHA-512 --rounds=4096 | xclip -sel clip
+# Work in progress...
 ```
-
-Create hosts file:
-```
-echo "[main-master]" > hosts
-echo "$(terraform output -json ip | jq -r ".") ansible_user=master" >> hosts
-```
-
 
 ## Authors
 
