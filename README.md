@@ -40,14 +40,22 @@ Packages:
 
 ### Installation
 
+Clone the repo
 ``` shell
 git clone git@github.com:theintegrative/home-lab-setup-ansible.git
 ```
 
 ## Usage
 
+Setting up the main node:
 ```
 ansible-playbook -i ansible/homelab -bK ansible/playbooks/main.yml
+```
+
+Setting up the worker node:
+```shell
+terraform init
+terraform apply
 ```
 
 ## Configuration
@@ -57,13 +65,5 @@ Generate a password hash:
 mkpasswd --method=SHA-512 --rounds=4096 | xclip -sel clip
 ```
 
-Create hosts file:
-```
-echo "[main-master]" > hosts
-echo "$(terraform output -json ip | jq -r ".") ansible_user=master" >> hosts
-```
-
-
 ## Authors
-
 - The Integrative: [Website](https://github.com/theintegrative)
