@@ -5,8 +5,7 @@
   vars_prompt:    
     - name: runner_key
       prompt: What is your runner registration key?
- 
   roles:
     - cli_tools
-    - #gitlab-runner
+      #- gitlab-runner
     - docker
