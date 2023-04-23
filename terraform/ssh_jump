@@ -1,0 +1,5 @@
+#! /bin/bash
+source library.sh
+get_vm_ip $1
+echo $IP_ADDRESS
+ssh -J home-1 theintegrative@$IP_ADDRESS
