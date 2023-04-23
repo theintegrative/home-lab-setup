@@ -1,0 +1,30 @@
+- hosts: all
+  become: true
+  become_user: theintegrative
+  vars:
+    target_release: 22
+  tasks:
+    - block:
+      - name: Say that there is going to be a release upgrade 
+        ansible.builtin.debug:
+          msg: "The current ubuntu releease is {{ansible_distribution_version}} and the target release is {{ target_release }}"
+      
+      - name: Upgrade all packages to latest
+        ansible.builtin.apt:
+          update_cache: yes
+          upgrade: full
+
+      - name: Ensure update-manager-core is installed
+        ansible.builtin.apt:
+          name: update-manager-core
+          state: present
+
+      - name: Upgrade ubuntu to latest proposed version
+        ansible.builtin.shell: do-release-upgrade -p -m server -f DistUpgradeViewNonInteractive
+      
+      - name: Do a reboot
+        ansible.builtin.reboot:
+
+      when:
+        - ansible_distribution == 'Ubuntu'
+        - ansible_distribution_version | int < target_release
