@@ -94,7 +94,7 @@ module "vm" {
   vcpu             = 
   libvirt_uri      = 
   vm_count         = 
-  ssh_pub_key   = 
+  ssh_pub_key      = 
   username         = 
   password_hash    =
 }
