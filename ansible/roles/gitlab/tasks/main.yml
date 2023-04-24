@@ -1,0 +1,22 @@
+---
+- name: Install packages using apt
+  ansible.builtin.yum:
+    name: 
+      - docker.io
+      - ansible
+    state: latest
+    update_cache: yes
+
+- name: Enable and restart docker
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+- name: Append docker to user {{ username }}
+  ansible.builtin.user:
+    name: "{{ username }}"
+    shell: /bin/bash
+    groups: docker
+    append: yes
