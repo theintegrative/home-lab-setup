@@ -5,6 +5,8 @@
       - dkms
       - network-manager
       - git
+    state: latest
+    update_cache: yes
 
 - name: Download drivers for archer T3U 
   ansible.builtin.git:
